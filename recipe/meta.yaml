@@ -1,4 +1,4 @@
-{% set version = '1.6.1' %}
+{% set version = '1.6.2' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,24 +7,22 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: rly_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/rly_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rly/rly_{{ version }}.tar.gz
-  sha256: b27f9c26197a799ea4edc04dc772e7c341f9135d39e86fa3e27755e480f2818e
+  sha256: 22837a41586b6c7afb3d09b1bf71af9189a8bb846a77c55823a2dc98c72b65ad
 
 build:
   merge_build_host: True  # [win]
-  number: 1000
-  skip: true  # [win32]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{native}}toolchain        # [win]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
     - {{posix}}sed               # [win]
@@ -53,8 +51,26 @@ about:
 
 extra:
   recipe-maintainers:
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
+    - conda-forge/r
+
+# Package: rly
+# Type: Package
+# Title: 'Lex' and 'Yacc'
+# Version: 1.6.2
+# Date: 2018-09-09
+# Authors@R: c(person("Marek", "Jagielski", role = c("aut", "cre", "cph"), email = "marek.jagielski@gmail.com"), person("David M.", "Beazley", role = c("aut", "cph")), person("Yasutaka", "Tanaka", role = c("ctb")), person("Henrico", "Witvliet", role = c("ctb")))
+# Author: Marek Jagielski [aut, cre, cph], David M. Beazley [aut, cph], Yasutaka Tanaka [ctb], Henrico Witvliet [ctb]
+# Maintainer: Marek Jagielski <marek.jagielski@gmail.com>
+# Description: R implementation of the common parsing tools 'lex' and 'yacc'.
+# License: MIT + file LICENSE
+# URL: https://github.com/systemincloud/rly
+# BugReports: https://github.com/systemincloud/rly/issues
+# Suggests: testthat
+# Depends: R (>= 3.3.0)
+# Imports: R6, futile.logger
+# RoxygenNote: 5.0.1
+# Collate: 'logger.R' 'lex.R' 'yacc.R'
+# NeedsCompilation: yes
+# Packaged: 2018-09-09 21:23:39 UTC; lupus
+# Repository: CRAN
+# Date/Publication: 2018-09-10 22:30:03 UTC
