@@ -1,4 +1,4 @@
-{% set version = "1.6.2" %}
+{% set version = "1.7.4" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rly_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rly/rly_{{ version }}.tar.gz
-  sha256: 22837a41586b6c7afb3d09b1bf71af9189a8bb846a77c55823a2dc98c72b65ad
+  sha256: 1f59fb906bacf1cae22fe54dd340137063229c8dbcb64aa1a85006fd02bb9910
 
 build:
   merge_build_host: true  # [win]
-  number: 2
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
