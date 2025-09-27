@@ -1,4 +1,4 @@
-{% set version = "1.7.4" %}
+{% set version = "1.7.7" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rly_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rly/rly_{{ version }}.tar.gz
-  sha256: 1f59fb906bacf1cae22fe54dd340137063229c8dbcb64aa1a85006fd02bb9910
+  sha256: fbc35778078a9341595959fe05917350af419ef6772c17a4ea87b195205e57c6
 
 build:
-  number: 4
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
